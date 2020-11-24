@@ -62,6 +62,7 @@ function setup() {
 }
 
 function draw() {
+  Engine.update(engine);
   background(0);  
  stand1.display();
  stand2.display();
@@ -106,7 +107,7 @@ function draw() {
 }
 
 function mouseDragged(){
-  Matter.Body.setPosition(polygon, {x: mouseX , y: mouseY});
+  Matter.Body.setPosition(this. polygon, {x: mouseX , y: mouseY});
 }
 
 function mouseReleased(){
