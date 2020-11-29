@@ -7,14 +7,14 @@ var stand1, stand2;
 var block1, block2, block3, block4, block5, block6, block7, block8, block9, block10, block11,
 block12, block13, block14, block15, block16, block17, block18, block19, block20, block21,
  block22, block23, block24, block25;
-var polygon;
+var polygon, slingshot;
 
 function preload() {
   polygonImage = loadImage("polygon.png");
 }
 
 function setup() {
-  createCanvas(1200,800);
+  createCanvas(1200, 780);
   engine = Engine.create();
   world = engine.world;
 
@@ -58,58 +58,63 @@ function setup() {
   polygon = Bodies.circle(100, 500, 20);
   World.add(world, polygon);
 
-  slingshot = new SlingShot(polygon, {x:100,y:200});
+  slingshot = new SlingShot(polygon, {x:200,y:500});
+  Engine.run(engine);
 }
 
 function draw() {
-  Engine.update(engine);
   background(0);  
- stand1.display();
- stand2.display();
+  stand1.display();
+  stand2.display();
 
- fill("darkturquoise");
- block1.display();
- block2.display();
- block3.display();
- block4.display();
- block5.display();
- fill("greenyellow");
- block6.display();
- block7.display();
- block8.display();
- fill("pink");
- block9.display();
- fill("lightsteelblue");
- block10.display();
- block11.display();
- block12.display();
- block13.display();
- block14.display();
- block15.display();
- block16.display();
- fill("orchid");
- block17.display();
- block18.display();
- block19.display();
- block20.display();
- block21.display();
- fill("mediumseagreen");
- block22.display();
- block23.display();
- block24.display();
- fill("darkorange");
- block25.display();
+  fill("darkturquoise");
+  block1.display();
+  block2.display();
+  block3.display();
+  block4.display();
+  block5.display();
+  fill("greenyellow");
+  block6.display();
+  block7.display();
+  block8.display();
+  fill("pink");
+  block9.display();
+  fill("lightsteelblue");
+  block10.display();
+  block11.display();
+  block12.display();
+  block13.display();
+  block14.display();
+  block15.display();
+  block16.display();
+  fill("orchid");
+  block17.display();
+  block18.display();
+  block19.display();
+  block20.display();
+  block21.display();
+  fill("mediumseagreen");
+  block22.display();
+  block23.display();
+  block24.display();
+  fill("darkorange");
+  block25.display();
 
-
- imageMode(CENTER);
- image(polygonImage, polygon.position.x, polygon.position.y, 40, 40);
- drawSprites();
+  imageMode(CENTER);
+  image(polygonImage, polygon.position.x, polygon.position.y, 40, 40);
+  drawSprites();
 }
 
 function mouseDragged(){
-  Matter.Body.setPosition(this. polygon, {x: mouseX , y: mouseY});
+  Matter.Body.setPosition(this.polygon, {x: mouseX , y: mouseY});
 }
 
 function mouseReleased(){
   slingshot.fly();
+}
+
+function keyPressed(){
+  if(keyCode === 32){
+    slingshot.attach(this.polygon);
+  }
 }
