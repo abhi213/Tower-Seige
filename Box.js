@@ -9,9 +9,16 @@ class Box {
     this.body = Bodies.rectangle(x, y, width, height, options);
     this.width = width;
     this.height = height;
+    this.score1 = 0;
     World.add(world, this.body);
   }
   
+   score(){
+      if(this.visibility<0 && this.visibility >-105){
+        score1++;
+      }
+   }
+
    display(){
     if (this.body.speed < 7){
        var angle = this.body.angle;  
